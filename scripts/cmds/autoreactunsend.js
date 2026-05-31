@@ -1,21 +1,25 @@
 module.exports = {
 	config: {
 		name: "autoreactunsend",
-		version: "1.0",
+		version: "1.1",
 		author: "ChatGPT",
 		role: 0,
-		description: "🐦‍🔥 react dile bot msg unsend korbe",
+		description: "🐦‍🔥 / 🌚 react dile bot msg unsend",
 		category: "box chat"
 	},
 
 	onReaction: async function ({ event, api }) {
 		try {
+
+			const react = ["🐦‍🔥", "🌚"];
+
 			if (
-				event.reaction == "🐦‍🔥" &&
+				react.includes(event.reaction) &&
 				event.userID != api.getCurrentUserID()
 			) {
 				api.unsendMessage(event.messageID);
 			}
+
 		}
 		catch (e) {
 			console.log(e);
